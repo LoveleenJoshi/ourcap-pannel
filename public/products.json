@@ -1,0 +1,14 @@
+{
+    "Name": "Samsung Tv",
+    "Price": 42000.22,
+    "Stock": true,
+    "ShippedTo": [
+        "Hyd",
+        "Delhi",
+        "Pune"
+    ],
+    "Rating": {
+        "Rate": 4.2,
+        "Count": 1200
+    }
+}
