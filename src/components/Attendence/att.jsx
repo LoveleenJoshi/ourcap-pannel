@@ -1,19 +1,32 @@
 import { useState, useEffect } from "react";
 import "./Attendence.css";
 
-export default function Attendence() {
+export default function AttendenceMain() {
   const [isClockedIn, setIsClockedIn] = useState(false);
   const [firstClockInTime, setFirstClockInTime] = useState(null);
   const [lastClockOutTime, setLastClockOutTime] = useState(null);
   const [totalDuration, setTotalDuration] = useState(0);
- 
+  const [lastClockInTimestamp, setLastClockInTimestamp] = useState(null);
+  let interval;
+
+  useEffect(() => {
+    // Retrieve last clock-in timestamp and date from localStorage
+    const storedTimestamp = localStorage.getItem('lastClockInTimestamp');
+    const storedDate = localStorage.getItem('lastClockInDate');
+    setLastClockInTimestamp(storedTimestamp ? parseInt(storedTimestamp, 10) : null);
+
+    // If the stored date is not the current date, reset the timestamp
+    if (storedDate !== new Date().toLocaleDateString()) {
+      setLastClockInTimestamp(null);
+    }
+  }, []);
+
+  const canUpdateFirstIn = !lastClockInTimestamp || (Date.now() - lastClockInTimestamp >= 24 * 60 * 60 * 1000);
 
   const buttonText = isClockedIn ? "Clock Out" : "Clock In";
   const buttonTheme = isClockedIn ? "btn btn-danger" : "btn btn-success";
 
   useEffect(() => {
-    let interval;
-
     if (isClockedIn) {
       // Clock In
       const currentTime = new Date();
@@ -27,28 +40,34 @@ export default function Attendence() {
         // Update the total duration every second
         setTotalDuration((prevDuration) => prevDuration + 1000);
       }, 1000);
+
+      // Save the current timestamp and date to localStorage
+      localStorage.setItem('lastClockInTimestamp', Date.now());
+      localStorage.setItem('lastClockInDate', currentTime.toLocaleDateString());
     } else {
       // Clock Out
       const currentTime = new Date();
       setLastClockOutTime(`${currentTime.toLocaleTimeString()}`);
       setFirstClockInTime(null);
 
-      // Clear the interval when user clocks out
+      // Clear the interval when the user clocks out
       clearInterval(interval);
     }
 
     return () => {
-      
       clearInterval(interval);
     };
-  }, [isClockedIn]);
+  }, [isClockedIn, canUpdateFirstIn]);
 
   useEffect(() => {
     setLastClockOutTime(null);
-  }, []); // Empty dependency array means it runs only once when the component mounts
-
+  }, []);
 
   function handleClock() {
+    if (!isClockedIn && !canUpdateFirstIn) {
+      alert("You can't start the time before the next date. Please wait for 24 hours.");
+      return;
+    }
     setIsClockedIn((prev) => !prev);
   }
 
@@ -58,34 +77,31 @@ export default function Attendence() {
         <h4>Attendance</h4>
         <div>
           <div>
-          <button className="btn btn-light me-1 p-2">
-          First in : {firstClockInTime || " - "}
+            <button className="btn btn-light me-1 p-2">
+              First in : {firstClockInTime || " - "}
             </button>
             <button className="btn btn-light me-3">
-             Last Out : {isClockedIn ? " - " : lastClockOutTime}
+              Last Out : {isClockedIn ? " - " : lastClockOutTime}
             </button>
 
             <button onClick={handleClock} className={buttonTheme}>
-              {buttonText}-{totalDuration > 0 && (
-              <>{formatDuration(totalDuration)}</>
-            )}
+              {buttonText}-{totalDuration > 0 && <>{formatDuration(totalDuration)}</>}
             </button>
-            
           </div>
         </div>
       </div>
 
       <table className="table table hover table-secondary">
         <thead>
-            <tr>
-                <th>Date</th>
-                <th>Clock In</th>
-                <th>Clock In Location </th>
-                <th>Clock Out</th>
-                <th>Work Schedule</th>
-                <th>Logged Time</th>
-                <th>Paid Time</th>
-            </tr>
+          <tr>
+            <th>Date</th>
+            <th>Clock In</th>
+            <th>Clock In Location </th>
+            <th>Clock Out</th>
+            <th>Work Schedule</th>
+            <th>Logged Time</th>
+            <th>Paid Time</th>
+          </tr>
         </thead>
       </table>
     </div>

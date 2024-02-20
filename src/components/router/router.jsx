@@ -1,7 +1,9 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { Login} from "../Login/login";
 import { Register } from "../Register/Register";
-import { Attendence } from "../Attendence/Attendence";
+import  Attendence  from "../Attendence/Attendence";
+import  AttendenceMain  from "../Attendence/att";
+import ForgetPassword from "../forgetPassword/ForgtPassword";
 
 export function RouterMain(){
     return(
@@ -24,7 +26,8 @@ export function RouterMain(){
             <Routes>
                 <Route path="/" element={<Login/>}/>
                 <Route path="/Register" element={<Register/>}/>
-                <Route path="/Attendence" element={<Attendence />}/>
+                <Route path="/Attendence" element={<AttendenceMain/>}/>
+                <Route path="/forgetPassword" element={<ForgetPassword/>}/>
               </Routes>
               </BrowserRouter>
         </div>
