@@ -6,6 +6,12 @@ import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 import reportWebVitals from './reportWebVitals';
 import { RouterMain } from './components/router/router';
+import EditForm from './components/edit-form-functionality/edit-form';
+import AddessEditForm from './components/edit-form-functionality/address-edit';
+import Sample from './components/Login/sample';
+import AddressEditForm from './components/edit-form-functionality/address-edit';
+import EmergencyEditForm from './components/edit-form-functionality/Emergency-edit';
+import BankEditForm from './components/edit-form-functionality/Bank-edit';
 
 
 
@@ -16,7 +22,7 @@ import { RouterMain } from './components/router/router';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterMain/>
+    <BankEditForm/>
   </React.StrictMode>
 );
 
