@@ -8,11 +8,17 @@ import reportWebVitals from './reportWebVitals';
 import { RouterMain } from './components/router/router';
 import EditForm from './components/edit-form-functionality/edit-form';
 import AddessEditForm from './components/edit-form-functionality/address-edit';
-import Sample from './components/Login/sample';
+
 import AddressEditForm from './components/edit-form-functionality/address-edit';
 import EmergencyEditForm from './components/edit-form-functionality/Emergency-edit';
 import BankEditForm from './components/edit-form-functionality/Bank-edit';
 
+import NewsComponent from './components/api-utils/NewsComponent';
+import EmployeeDetails from './components/api-utils/userDetails';
+import DashboardDetails from './components/api-utils/dashboard';
+import StateDetails from './components/api-utils/getStates';
+import CityDetails from './components/api-utils/getCities';
+import CityList from './components/api-utils/getCities';
 
 
 
@@ -22,7 +28,7 @@ import BankEditForm from './components/edit-form-functionality/Bank-edit';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BankEditForm/>
+    <CityList/>
   </React.StrictMode>
 );
 

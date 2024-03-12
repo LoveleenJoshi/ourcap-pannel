@@ -24,6 +24,7 @@ const EmployeeDetails = () => {
 
         fetchData();
     }, []);
+    
 
     return (
         <div>
