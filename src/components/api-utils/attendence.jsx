@@ -16,6 +16,7 @@ export const Attendance = () => {
 
         const response = await userAttendanceApi.post("", requestBody);
         setData(response.data);
+      
       } catch (error) {
         console.error("Error response:", error.response);
         setError(error);
@@ -26,13 +27,13 @@ export const Attendance = () => {
 
     fetchData();
   }, []);
-
+  console.log(data)
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div>
-      <h1>Attendance Data</h1>
+      <h1>{data.message}</h1>
       <table>
         <thead>
           <tr>
@@ -50,7 +51,10 @@ export const Attendance = () => {
         </thead>
         <tbody>
           {data.data.map((attendance, index) => (
+           
             <tr key={index}>
+               console.log(data)
+               <td>{data.message}</td>
               <td>{attendance.id}</td>
               <td>{attendance.user_id ? attendance.user_id : "-"}</td>
               <td>

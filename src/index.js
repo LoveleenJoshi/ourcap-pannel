@@ -24,6 +24,8 @@ import getJobComponent from './components/api-utils/get-jobs';
 import GetJobComponent from './components/api-utils/get-jobs';
 import CompanyDetails from './components/api-utils/get-company';
 import DocumentUpload from './components/api-utils/get-documents';
+import {Attendance}  from './components/api-utils/attendence';
+
 
 
 
@@ -33,7 +35,7 @@ import DocumentUpload from './components/api-utils/get-documents';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <DocumentUpload/>
+    <Attendance/>
   </React.StrictMode>
 );
 
