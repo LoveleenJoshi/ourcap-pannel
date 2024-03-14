@@ -19,6 +19,11 @@ import DashboardDetails from './components/api-utils/dashboard';
 import StateDetails from './components/api-utils/getStates';
 import CityDetails from './components/api-utils/getCities';
 import CityList from './components/api-utils/getCities';
+import ClockOutdetails from './components/api-utils/time-zone-api';
+import getJobComponent from './components/api-utils/get-jobs';
+import GetJobComponent from './components/api-utils/get-jobs';
+import CompanyDetails from './components/api-utils/get-company';
+import DocumentUpload from './components/api-utils/get-documents';
 
 
 
@@ -28,7 +33,7 @@ import CityList from './components/api-utils/getCities';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <CityList/>
+    <DocumentUpload/>
   </React.StrictMode>
 );
 
