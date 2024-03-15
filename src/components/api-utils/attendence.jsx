@@ -16,6 +16,7 @@ export const Attendance = () => {
 
         const response = await userAttendanceApi.post("", requestBody);
         setData(response.data);
+      
       } catch (error) {
         console.error("Error response:", error.response);
         setError(error);
@@ -26,13 +27,13 @@ export const Attendance = () => {
 
     fetchData();
   }, []);
-
+  console.log(data)
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div>
-      <h1>Attendance Data</h1>
+      <h1>{data.message}</h1>
       <table>
         <thead>
           <tr>
@@ -53,17 +54,11 @@ export const Attendance = () => {
             <tr key={index}>
               <td>{attendance.id}</td>
               <td>{attendance.user_id ? attendance.user_id : "-"}</td>
-              <td>
-                {attendance.clock_in_time ? attendance.clock_in_time : "-"}
-              </td>
-              <td>
-                {attendance.clock_out_time ? attendance.clock_out_time : "-"}
-              </td>
+              <td>{attendance.clock_in_time ? attendance.clock_in_time : "-"}</td>
+              <td>{attendance.clock_out_time ? attendance.clock_out_time : "-"}</td>
               <td>{attendance.duration ? attendance.duration : "-"}</td>
               <td>{attendance.notes ? attendance.notes : "-"}</td>
-              <td>
-                {attendance.clock_in_date ? attendance.clock_in_date : "-"}
-              </td>
+              <td>{attendance.clock_in_date ? attendance.clock_in_date : "-"}</td>
               <td>{attendance.date}</td>
               <td>{attendance.day_of_week}</td>
               <td>{attendance.status}</td>

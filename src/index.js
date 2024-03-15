@@ -24,6 +24,12 @@ import getJobComponent from './components/api-utils/get-jobs';
 import GetJobComponent from './components/api-utils/get-jobs';
 import CompanyDetails from './components/api-utils/get-company';
 import DocumentUpload from './components/api-utils/get-documents';
+import {Attendance}  from './components/api-utils/attendence';
+import LeaveList from './components/api-utils/get-single-user-assign-leave';
+import UserLeaveList from './components/api-utils/get-all-user-leave';
+import LeaveListAssign from './components/api-utils/userleave-assign-list';
+import UserLeaveListAss from './components/api-utils/userleave-assign-list';
+
 
 
 
@@ -33,7 +39,7 @@ import DocumentUpload from './components/api-utils/get-documents';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <DocumentUpload/>
+    <UserLeaveListAss/>
   </React.StrictMode>
 );
 
