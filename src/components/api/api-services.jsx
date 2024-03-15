@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_TOKEN = "453|rfXIy1acZ721s2558ExRcPjBXaiCMoSh5XjTGTotb0bcb9ea";
+const API_TOKEN = "454|nYqkWBhe68CLWVgA3JmyIv6735tihvpFqUvX5aBoe9755375";
 
 export const userAttendanceApi = axios.create({
   baseURL: "https://ourcap-hrms.ctportfolio.in/api/get-user-attendance",

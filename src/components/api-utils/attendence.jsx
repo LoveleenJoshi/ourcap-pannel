@@ -51,23 +51,14 @@ export const Attendance = () => {
         </thead>
         <tbody>
           {data.data.map((attendance, index) => (
-           
             <tr key={index}>
-               console.log(data)
-               <td>{data.message}</td>
               <td>{attendance.id}</td>
               <td>{attendance.user_id ? attendance.user_id : "-"}</td>
-              <td>
-                {attendance.clock_in_time ? attendance.clock_in_time : "-"}
-              </td>
-              <td>
-                {attendance.clock_out_time ? attendance.clock_out_time : "-"}
-              </td>
+              <td>{attendance.clock_in_time ? attendance.clock_in_time : "-"}</td>
+              <td>{attendance.clock_out_time ? attendance.clock_out_time : "-"}</td>
               <td>{attendance.duration ? attendance.duration : "-"}</td>
               <td>{attendance.notes ? attendance.notes : "-"}</td>
-              <td>
-                {attendance.clock_in_date ? attendance.clock_in_date : "-"}
-              </td>
+              <td>{attendance.clock_in_date ? attendance.clock_in_date : "-"}</td>
               <td>{attendance.date}</td>
               <td>{attendance.day_of_week}</td>
               <td>{attendance.status}</td>
